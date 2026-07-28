@@ -1,10 +1,17 @@
+const express = require("express");
 const config = require("./config");
+const routes = require("./routes");
 
 function createApp() {
-  return {
-    name: config.app.name,
-    environment: config.app.environment
-  };
+  const app = express();
+
+  app.use(express.json());
+
+  app.use("/api", routes);
+
+  app.config = config;
+
+  return app;
 }
 
 module.exports = createApp;
