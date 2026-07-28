@@ -1,7 +1,8 @@
-const app = require("./app");
+const config = require("./config");
+const createApp = require("./app");
 
-const PORT = process.env.PORT || 3000;
+const app = createApp();
 
-app.listen(PORT, () => {
-  console.log(`Wiki backend running on port ${PORT}`);
-});
+console.log(
+  `${app.name} running in ${app.environment} mode on port ${config.app.port}`
+);
